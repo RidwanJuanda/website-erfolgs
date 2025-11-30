@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalImage = document.getElementById('modalImage');
     const closeBtn = document.querySelector('.modal-close');
     const portfolioImages = document.querySelectorAll('.portfolio-image');
+    const galleryImages = document.querySelectorAll('.gallery-image');
 
     let isDragging = false;
     let startX, startY, scrollLeft, scrollTop;
@@ -43,8 +44,18 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentX = 0;
     let currentY = 0;
 
-    // Open modal on image click
+    // Open modal on image click (portfolio images)
     portfolioImages.forEach(img => {
+        img.addEventListener('click', function() {
+            modalImage.src = this.src;
+            modalImage.alt = this.alt;
+            modal.classList.add('active');
+            resetImageTransform();
+        });
+    });
+
+    // Open modal on image click (gallery images)
+    galleryImages.forEach(img => {
         img.addEventListener('click', function() {
             modalImage.src = this.src;
             modalImage.alt = this.alt;
